@@ -5,7 +5,7 @@ public class Boundary : MonoBehaviour
 {
 	void OnTriggerExit2D(Collider2D other)
 	{
-		if (other.gameObject.tag == "PlayerBullet") {
+		if (other.gameObject.tag == "PlayerBullet" || other.gameObject.tag == "EnemyBullet") {
 			other.gameObject.SetActive (false);
 			return;
 		} else {

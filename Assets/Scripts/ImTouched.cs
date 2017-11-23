@@ -9,6 +9,7 @@ public class ImTouched : MonoBehaviour {
 	public GameObject pauseScreen;
 	public GameObject touchMe;
 	public Text pauseText;
+	public Text pauseMessage;
 
 	void Update ()
 	{
@@ -24,6 +25,7 @@ public class ImTouched : MonoBehaviour {
 				pauseScreen.SetActive(false);
 				touchMe.SetActive(false);
 				pauseText.text = " ";
+				pauseMessage.text = " ";
 			} else {
 				moveable = false;
 				return;
@@ -33,6 +35,7 @@ public class ImTouched : MonoBehaviour {
 			pauseScreen.SetActive(true);
 			touchMe.SetActive(true);
 			pauseText.text = "PAUSED";
+			pauseMessage.text = " hold the green\n box to start";
 			moveable = false;
 		}
 		#endif
@@ -47,6 +50,8 @@ public class ImTouched : MonoBehaviour {
 				Time.timeScale = 1;
 				pauseScreen.SetActive(false);
 				touchMe.SetActive(false);
+				pauseText.text = " ";
+				pauseMessage.text = " ";
 			} else {
 				moveableA = false;
 				return;
@@ -56,6 +61,8 @@ public class ImTouched : MonoBehaviour {
 			pauseScreen.SetActive(true);
 			touchMe.SetActive(true);
 			moveableA = false;
+			pauseText.text = "PAUSED";
+			pauseMessage.text = " hold the green\n box to start";
 		}
 		#endif
 	}

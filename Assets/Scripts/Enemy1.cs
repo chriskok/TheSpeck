@@ -10,7 +10,7 @@ public class Enemy1 : MonoBehaviour
 	public float delay;
 	public float speed;
 
-	private int zed;
+	private int zed = 180;
 	private Quaternion rotation;
 	private float yVal;
 
@@ -23,8 +23,18 @@ public class Enemy1 : MonoBehaviour
 	void Fire ()
 	{
 		rotation = Quaternion.Euler(0,0,zed);
-		Instantiate (shot, shotSpawn.position, rotation);
+		//Instantiate (shot, shotSpawn.position, rotation);
 		zed += 15;
+
+		for (int i = 0; i < PoolManager.Instance.enemy1BulletList.Count; i++) {
+			if (PoolManager.Instance.enemy1BulletList [i].activeInHierarchy == false) {
+				//Debug.Log ("Fire: " + i);
+				PoolManager.Instance.enemy1BulletList [i].transform.position = shotSpawn.position;
+				PoolManager.Instance.enemy1BulletList [i].transform.rotation = rotation;
+				PoolManager.Instance.enemy1BulletList [i].SetActive (true);
+				break;
+			}
+		}
 	}
 
 	void Update ()

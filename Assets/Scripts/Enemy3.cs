@@ -31,7 +31,17 @@ public class Enemy3 : MonoBehaviour
 		for(int zed = 240; zed <= maxZed; zed += 15)
 		{
 			rotation = Quaternion.Euler(0,0,zed);
-			Instantiate (shot, shotSpawn.position, rotation);
+			//Instantiate (shot, shotSpawn.position, rotation);
+
+			for (int i = 0; i < PoolManager.Instance.enemy3BulletList.Count; i++) {
+				if (PoolManager.Instance.enemy3BulletList [i].activeInHierarchy == false) {
+					//Debug.Log ("Fire: " + i);
+					PoolManager.Instance.enemy3BulletList [i].transform.position = shotSpawn.position;
+					PoolManager.Instance.enemy3BulletList [i].transform.rotation = rotation;
+					PoolManager.Instance.enemy3BulletList [i].SetActive (true);
+					break;
+				}
+			}
 		}
 	}
 

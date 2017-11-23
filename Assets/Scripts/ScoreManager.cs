@@ -6,7 +6,7 @@ public class ScoreManager : MonoBehaviour {
 	public static ScoreManager instance = null; 
 	public static int coins;
 	public static int speedPrice;
-	public static int shieldPrice;
+	public static int healthPrice;
 
 	void Awake () {
 		if (instance == null)
@@ -26,6 +26,6 @@ public class ScoreManager : MonoBehaviour {
 
 	void Start(){
 		speedPrice = 1;
-		shieldPrice = 1;
+		healthPrice = 1;
 	}
 }

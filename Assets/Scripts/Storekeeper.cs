@@ -14,14 +14,15 @@ public class Storekeeper : MonoBehaviour {
 	void Update () {
 		coinText.text = "Coins: " + ScoreManager.coins;
 		speedP.text = "Price: " + ScoreManager.speedPrice;
-		shieldP.text = "Price: " + ScoreManager.shieldPrice;
+		shieldP.text = "Price: " + ScoreManager.healthPrice;
 	}
 
 	public void BoughtSpeed()
 	{
 		if (ScoreManager.coins >= ScoreManager.speedPrice) {
 			ScoreManager.coins -= ScoreManager.speedPrice;
-			ScoreManager.speedPrice++;
+			ScoreManager.speedPrice *= 2;
+			PlayerBullets.speedStat++;
 		} else {
 			return;
 		}
@@ -29,9 +30,10 @@ public class Storekeeper : MonoBehaviour {
 
 	public void BoughtShield()
 	{
-		if (ScoreManager.coins >= ScoreManager.shieldPrice) {
-			ScoreManager.coins -= ScoreManager.shieldPrice;
-			ScoreManager.shieldPrice++;
+		if (ScoreManager.coins >= ScoreManager.healthPrice) {
+			ScoreManager.coins -= ScoreManager.healthPrice;
+			ScoreManager.healthPrice *= 5;
+			PlayerHealth.playerStaticHealth++;
 		} else {
 			return;
 		}

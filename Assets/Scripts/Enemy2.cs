@@ -28,10 +28,20 @@ public class Enemy2 : MonoBehaviour
 
 	void Fire ()
 	{
-		for(int zed = 0; zed < maxZed; zed += 15)
-		{
-			rotation = Quaternion.Euler(0,0,zed);
-			Instantiate (shot, shotSpawn.position, rotation);
+		for (int zed = 0; zed < maxZed; zed += 15) {
+			rotation = Quaternion.Euler (0, 0, zed);
+			//Instantiate (shot, shotSpawn.position, rotation);
+		
+
+			for (int i = 0; i < PoolManager.Instance.enemy2BulletList.Count; i++) {
+				if (PoolManager.Instance.enemy2BulletList [i].activeInHierarchy == false) {
+					//Debug.Log ("Fire: " + i);
+					PoolManager.Instance.enemy2BulletList [i].transform.position = shotSpawn.position;
+					PoolManager.Instance.enemy2BulletList [i].transform.rotation = rotation;
+					PoolManager.Instance.enemy2BulletList [i].SetActive (true);
+					break;
+				}
+			}
 		}
 	}
 
